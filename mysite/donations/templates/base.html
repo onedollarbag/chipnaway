@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chip'n Away @ Heart Disease</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'donations/styles.css' %}?v=5"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <div class="nav-left">
+          <a href="{% url 'donations:home' %}" class="nav-brand">
+            <img
+              src="{% static 'donations/chipnaway-logo-v2.png' %}"
+              alt="Chip'n Away @ Heart Disease"
+              class="nav-logo-img"
+            />
+          </a>
+        </div>
+        <div class="nav-links">
+          <a
+            href="{% url 'donations:home' %}"
+            class="nav-link{% if request.resolver_match.url_name == 'home' %} nav-link--active{% endif %}"
+          >
+            Home
+          </a>
+          <a
+            href="{% url 'donations:about' %}"
+            class="nav-link{% if request.resolver_match.url_name == 'about' %} nav-link--active{% endif %}"
+          >
+            About
+          </a>
+          <a
+            href="{% url 'donations:events' %}"
+            class="nav-link{% if request.resolver_match.url_name == 'events' %} nav-link--active{% endif %}"
+          >
+            Events
+          </a>
+          <a
+            href="{% url 'donations:volunteer' %}"
+            class="nav-link{% if request.resolver_match.url_name == 'volunteer' %} nav-link--active{% endif %}"
+          >
+            Volunteer
+          </a>
+          <a
+            href="{% url 'donations:donate' %}"
+            class="nav-link nav-link--donate{% if request.resolver_match.url_name == 'donate' %} nav-link--active{% endif %}"
+          >
+            Donate
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-newsletter" aria-label="Newsletter signup">
+        <p class="footer-newsletter-text">
+          Get occasional updates on events and heart‑health tips.
+        </p>
+        <form class="footer-newsletter-form" action="#" method="post">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+          />
+          <button type="submit" class="btn-primary btn-primary--small">
+            Sign up
+          </button>
+        </form>
+        <p class="footer-newsletter-note">
+          We keep messages occasional and focused on awareness, diet, and exercise.
+        </p>
+      </div>
+
+      <p class="footer-stay-informed">
+        <a href="{% url 'donations:events' %}">Stay informed</a> — events and updates.
+      </p>
+      <p class="muted-text">
+        &copy; {% now "Y" %} ·
+        <a href="mailto:chipnaway113@gmail.com">chipnaway113@gmail.com</a>
+      </p>
+    </footer>
+  </body>
+</html>
+

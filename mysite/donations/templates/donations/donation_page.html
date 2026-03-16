@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Make a donation</h1>
+      <p class="hero-subtitle">
+        Your gift funds heart‑health education and outreach.
+      </p>
+    </div>
+  </section>
+
+  <section class="donate-intro">
+    <div class="card card--soft">
+      <h2 class="card-title">What your gift does</h2>
+      <p class="muted-text">
+        Funds workshops, the CARDIAC Car Show, and outreach—awareness, diet, and exercise. One-time or recurring, every bit helps.
+      </p>
+    </div>
+  </section>
+
+  <figure class="banner" aria-label="Outreach and community">
+    <img
+      src="{% static 'donations/donation-extra.png' %}"
+      alt="Chip'n Away @ Heart Disease outreach space"
+    />
+  </figure>
+
+  <section class="layout-stack">
+    <div class="card">
+      <h2 class="card-title">Donation details</h2>
+
+      {% if success %}
+        <div class="alert alert-success" role="status">
+          <p>Thank you for your donation{% if donated_amount %} of <strong>{{ donated_amount }}</strong>{% endif %}.</p>
+        </div>
+      {% endif %}
+
+      <form method="post" novalidate class="donation-form">
+        {% csrf_token %}
+
+        <div class="form-row">
+          <label for="{{ form.amount.id_for_label }}">Amount</label>
+          {{ form.amount }}
+          {% if form.amount.errors %}
+            <div class="field-errors">
+              {{ form.amount.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <fieldset class="form-row">
+          <legend>Frequency</legend>
+          {{ form.frequency }}
+          {% if form.frequency.errors %}
+            <div class="field-errors">
+              {{ form.frequency.errors }}
+            </div>
+          {% endif %}
+        </fieldset>
+
+        <div class="form-row form-row-split">
+          <div class="form-field">
+            <label for="{{ form.name.id_for_label }}">Name</label>
+            {{ form.name }}
+            {% if form.name.errors %}
+              <div class="field-errors">
+                {{ form.name.errors }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="form-field">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+              <div class="field-errors">
+                {{ form.email.errors }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.message.id_for_label }}">Message</label>
+          {{ form.message }}
+          {% if form.message.errors %}
+            <div class="field-errors">
+              {{ form.message.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Submit donation</button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="card secondary-card">
+      <h2 class="card-title">Where it goes</h2>
+      <p class="muted-text">
+        Workshops, events, and outreach—all focused on awareness, diet, and exercise.
+      </p>
+    </aside>
+  </section>
+{% endblock %}
+

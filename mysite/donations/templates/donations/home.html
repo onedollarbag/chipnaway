@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="hero hero--home">
+    <div class="hero-content">
+      <h1 class="hero-title">Help Can't Wait for Heart Health</h1>
+      <p class="hero-subtitle">
+        Your support helps bring awareness, proper diet, and exercise to more people.
+      </p>
+    </div>
+  </section>
+
+  <figure class="hero-banner" aria-label="Community supporting Chip'n Away">
+    <img
+      src="{% static 'donations/support-helps.png' %}"
+      alt="Community members supporting Chip'n Away @ Heart Disease"
+    />
+  </figure>
+
+  <section class="layout-stack">
+    <div class="card">
+      <h2 class="card-title">What we do</h2>
+      <p class="muted-text">
+        Workshops, the CARDIAC Car Show, and community outreach built on <strong>awareness</strong>, <strong>proper diet</strong>, and <strong>exercise</strong>.
+      </p>
+      <div class="home-actions">
+        <a href="{% url 'donations:about' %}" class="btn-primary">Learn more about us</a>
+        <a href="{% url 'donations:events' %}" class="home-actions-secondary">See upcoming events</a>
+      </div>
+    </div>
+
+    <aside class="card secondary-card">
+      <h2 class="card-title">Our story</h2>
+      <p class="muted-text">
+        Born from a coach’s fight with heart disease and a transplant in 2010—now a shared mission to help others avoid the same path.
+      </p>
+      <p class="muted-text">
+        <a href="{% url 'donations:about' %}">Read the full story</a>
+      </p>
+    </aside>
+  </section>
+
+  <figure class="banner" aria-label="Hands joined in support">
+    <img
+      src="{% static 'donations/story-hands.png' %}"
+      alt="Hands joined together in support"
+    />
+  </figure>
+
+  <section class="layout-stack give-section section-block">
+    <div class="card card--cta">
+      <h2 class="section-title">Volunteers & Supporters Needed</h2>
+      <p class="muted-text">
+        Give or volunteer—your time and gifts help us carry the mission forward.
+      </p>
+      <div class="home-actions home-actions--inline">
+        <a href="{% url 'donations:donate' %}" class="btn-primary">Give now</a>
+        <a href="{% url 'donations:volunteer' %}" class="btn-secondary">Volunteer</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+

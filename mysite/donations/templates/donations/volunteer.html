@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Volunteer your time</h1>
+      <p class="hero-subtitle">
+        Help spread awareness, diet, and exercise through outreach and events.
+      </p>
+    </div>
+  </section>
+
+  <section class="layout-stack">
+    <div class="card">
+      <h2 class="card-title">Volunteer details</h2>
+
+      {% if success %}
+        <div class="alert alert-success" role="status">
+          <p>Thank you for offering to volunteer. We’ll review your details.</p>
+        </div>
+      {% endif %}
+
+      <form method="post" novalidate class="donation-form">
+        {% csrf_token %}
+
+        <div class="form-row">
+          <label for="{{ form.name.id_for_label }}">Full name</label>
+          {{ form.name }}
+          {% if form.name.errors %}
+            <div class="field-errors">
+              {{ form.name.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.email.id_for_label }}">Email address</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <div class="field-errors">
+              {{ form.email.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.availability.id_for_label }}">Availability</label>
+          {{ form.availability }}
+          {% if form.availability.errors %}
+            <div class="field-errors">
+              {{ form.availability.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.interests.id_for_label }}">Areas you’d like to help with</label>
+          {{ form.interests }}
+          {% if form.interests.errors %}
+            <div class="field-errors">
+              {{ form.interests.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <label for="{{ form.message.id_for_label }}">Message</label>
+          {{ form.message }}
+          {% if form.message.errors %}
+            <div class="field-errors">
+              {{ form.message.errors }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Submit volunteer form</button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="card secondary-card">
+      <h2 class="card-title">Other ways to support</h2>
+      <p class="muted-text">
+        Outreach, CARDIAC Car Show, logistics—or give, share the message, or reconnect when you’re ready.
+      </p>
+    </aside>
+  </section>
+
+  <figure class="banner" aria-label="Volunteer with Chip'n Away">
+    <img
+      src="{% static 'donations/volunteer-flyer.png' %}"
+      alt="Volunteer for Chip'n Away @ Heart Disease"
+    />
+  </figure>
+{% endblock %}
+

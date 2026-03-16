@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Our legacy</h1>
+      <p class="hero-subtitle">
+        One family’s experience sparked a movement.
+      </p>
+    </div>
+  </section>
+
+  <figure class="hero-banner" aria-label="Founders of Chip'n Away">
+    <img
+      src="{% static 'donations/about-founders.png' %}"
+      alt="Founders of Chip'n Away @ Heart Disease"
+    />
+  </figure>
+
+  <section class="layout-stack">
+    <div class="card">
+      <h2 class="card-title">Who we are</h2>
+      <p class="muted-text">
+        A coach and educator faced heart disease and a transplant; with Cynthia, he turned it into a community focused on <strong>awareness</strong>, <strong>proper diet</strong>, and <strong>exercise</strong>. Since 2011 we've reached thousands through events and outreach.
+      </p>
+      <p class="muted-text">
+        Chip'n Away @ Heart Disease is a small, volunteer‑driven nonprofit. We partner with schools, churches, car clubs, and community groups to bring heart‑health education where people already gather, using real stories and practical tools rather than medical jargon.
+      </p>
+      <p class="muted-text">
+        Our work honors a specific story, but the goal is broad: help people know their numbers, listen to their bodies, and make everyday choices that protect their hearts. When someone leaves an event with one new question for their doctor or one small change in their routine, we see that as a win.
+      </p>
+    </div>
+
+    <figure class="banner" aria-label="Outreach at events">
+      <img
+        src="{% static 'donations/show-up.png' %}"
+        alt="Chip'n Away @ Heart Disease outreach table"
+      />
+    </figure>
+
+    <aside class="card secondary-card">
+      <h2 class="card-title">How we show up</h2>
+      <p class="muted-text">
+        CARDIAC Car Show, workshops, and everyday outreach—all centered on awareness, diet, and exercise. Volunteers and supporters help us plan events, greet guests, share their own stories, and stay in touch with families and participants.
+      </p>
+      <p class="muted-text">
+        If you’d like to invite Chip'n Away to your school, workplace, or community event, you can reach us any time at <a href="mailto:chipnaway113@gmail.com">chipnaway113@gmail.com</a>.
+      </p>
+    </aside>
+  </section>
+{% endblock %}
+
