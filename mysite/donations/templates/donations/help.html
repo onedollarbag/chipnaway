@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Find local weight‑loss support</h1>
+      <p class="hero-subtitle">
+        Use the map to look up nearby programs, clinics, and community resources that can help with healthy weight‑loss and heart‑health.
+      </p>
+    </div>
+  </section>
+
+  <section class="layout-stack">
+    <div class="card">
+      <h2 class="card-title">Search the map</h2>
+      <p class="muted-text">
+        This map uses free OpenStreetMap data. You can search for terms like
+        “weight loss clinic”, “dietitian”, or “fitness center”, then zoom in to see
+        options near you.
+      </p>
+      <div class="help-map-container">
+        <div id="help-map" aria-label="Map showing locations for weight‑loss assistance"></div>
+      </div>
+    </div>
+
+    <aside class="card secondary-card">
+      <h2 class="card-title">Tips for choosing safe support</h2>
+      <ul class="key-points">
+        <li>Look for licensed medical providers or registered dietitians when possible.</li>
+        <li>Be cautious of programs that promise extremely fast results or require large upfront fees.</li>
+        <li>Ask how a program supports awareness, proper diet, and sustainable exercise.</li>
+        <li>Talk with your doctor before making major changes to your diet, medications, or exercise.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    (function () {
+      const mapElement = document.getElementById("help-map");
+      if (!mapElement) return;
+
+      const map = L.map("help-map").setView([39.5, -98.35], 4); // Center on US
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      // Try to center on the user's approximate location if available
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            map.setView([lat, lng], 12);
+            L.marker([lat, lng]).addTo(map).bindPopup("You are here").openPopup();
+          },
+          function () {
+            // If permission denied or fails, we just keep the default view
+          }
+        );
+      }
+    })();
+  </script>
+{% endblock %}
+

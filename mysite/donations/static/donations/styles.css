@@ -439,6 +439,18 @@ body {
   background: rgba(249, 250, 251, 0.6);
 }
 
+.help-map-container {
+  margin-top: var(--space-md);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+#help-map {
+  width: 100%;
+  height: 320px;
+}
+
 .secondary-card {
   padding-top: calc(var(--space-lg) - 0.3rem);
   padding-bottom: calc(var(--space-lg) - 0.3rem);

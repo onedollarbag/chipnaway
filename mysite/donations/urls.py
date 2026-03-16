@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import about_view, donation_view, events_view, home_view, volunteer_view
+from .views import about_view, donation_view, events_view, help_view, home_view, volunteer_view
 
 app_name = "donations"
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path("volunteer/", volunteer_view, name="volunteer"),
     path("events/", events_view, name="events"),
     path("about/", about_view, name="about"),
+    path("help/", help_view, name="help"),
 ]
 

@@ -57,3 +57,7 @@ def events_view(request):
 def about_view(request):
     return render(request, "donations/about.html")
 
+
+def help_view(request):
+    return render(request, "donations/help.html")
+

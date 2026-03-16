@@ -42,6 +42,12 @@
             Events
           </a>
           <a
+            href="{% url 'donations:help' %}"
+            class="nav-link{% if request.resolver_match.url_name == 'help' %} nav-link--active{% endif %}"
+          >
+            Get help
+          </a>
+          <a
             href="{% url 'donations:volunteer' %}"
             class="nav-link{% if request.resolver_match.url_name == 'volunteer' %} nav-link--active{% endif %}"
           >
